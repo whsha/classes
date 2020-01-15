@@ -2,9 +2,8 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Block } from "./blocks/block";
-import { BlockColor } from "./blocks/blockColor";
-import { SchoolDay } from "./calendar/types";
+import { Block, BlockColor } from "./block";
+import { SchoolDay } from "./schoolDay";
 
 /** A map of the blocks to their schooldays to their colors */
 type BlockDayColorMap = {
@@ -146,8 +145,6 @@ const MapOfColorsToSchoolDaysToBlocks: ColorSchoolDayBlockMap = {
 export type BlockColorsForDay = {
     [B in Block]: BlockDayColorMap[B][SchoolDay]
 };
-
-// TODO: Memoize?
 
 /** Function to get the block colors that meet on a specific school day */
 export function getBlockColorsForDay(day: SchoolDay): BlockColorsForDay {
