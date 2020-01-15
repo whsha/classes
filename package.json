@@ -5,8 +5,6 @@
     "main": "build/index.js",
     "license": "GPL-3.0",
     "scripts": {
-        "test": "jest --verbose",
-        "testcov": "jest --coverage --verbose",
         "typecheck": "tsc --noEmit",
         "lint": "tslint --project ./tsconfig.json",
         "build": "tsc -p tsconfig.json"
@@ -14,7 +12,7 @@
     "husky": {
         "hooks": {
             "pre-commit": "yarn typecheck && yarn lint",
-            "pre-push": "yarn typecheck && yarn lint && yarn test",
+            "pre-push": "yarn typecheck && yarn lint",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },
@@ -23,17 +21,10 @@
             "@commitlint/config-conventional"
         ]
     },
-    "jest": {
-        "preset": "ts-jest",
-        "testEnvironment": "node"
-    },
     "devDependencies": {
         "@commitlint/config-conventional": "^8.3.4",
-        "@types/jest": "^24.0.25",
         "commitlint": "^8.3.4",
         "husky": "^4.0.10",
-        "jest": "^24.9.0",
-        "ts-jest": "^24.3.0",
         "tslint": "^5.20.1",
         "typescript": "^3.7.4"
     },
