@@ -5,6 +5,7 @@
 import { BlockColor } from "./block";
 import { Lunch } from "./lunch";
 import { SchoolDay } from "./schoolDay";
+import { Semester } from "./semester";
 
 /** The advisory object, missing a class type due to the fact that there only ever is one and storage can be smplified */
 export interface IAdvisory {
@@ -40,6 +41,9 @@ export interface IClass {
 
     /** The lunches that this class has */
     lunches: Lunches;
+
+    /** The semesters that this class meets */
+    semesters: Semesters;
 }
 
 /** A map of the days that a class meet */
@@ -47,6 +51,9 @@ export type MeetDays = { [K in SchoolDay]: boolean };
 
 /** A map of the days that a class has lunch */
 export type Lunches = { [K in SchoolDay]?: Lunch };
+
+/** A map of the semesters that a class meets */
+export type Semesters = { [K in Semester]: boolean };
 
 /** Get the count of times the class meets */
 export function timesClassMeetsPerCycle({ meets }: IClass): number {
