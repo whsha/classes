@@ -2,12 +2,13 @@
     "name": "@whsha/classes",
     "version": "0.1.0",
     "description": "The type defintions to manage and create classes for the WHS Helper App",
-    "main": "build/index.js",
     "license": "GPL-3.0",
     "scripts": {
         "typecheck": "tsc -p tsconfig.json --noEmit",
         "lint": "tslint --project ./tsconfig.json",
-        "build": "tsc -p tsconfig.json"
+        "build": "tsc -p tsconfig.json",
+        "test": "jest --verbose",
+        "testcov": "jest --coverage --verbose"
     },
     "husky": {
         "hooks": {
@@ -23,11 +24,24 @@
     },
     "devDependencies": {
         "@commitlint/config-conventional": "^8.3.4",
+        "@types/jest": "^24.9.0",
         "commitlint": "^8.3.4",
         "husky": "^4.0.10",
+        "jest": "^24.9.0",
         "standard-version": "^7.0.1",
+        "ts-jest": "^24.3.0",
         "tslint": "^5.20.1",
         "typescript": "^3.7.4"
     },
-    "dependencies": {}
+    "dependencies": {
+        "dayjs": "^1.8.19"
+    },
+    "jest": {
+        "preset": "ts-jest",
+        "collectCoverageFrom": [
+            "**/*.{ts,tsx}",
+            "!**/node_modules/**",
+            "!**/vendor/**"
+        ]
+    }
 }
