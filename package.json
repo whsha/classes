@@ -1,6 +1,6 @@
 {
     "name": "@whsha/classes",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "The type defintions to manage and create classes for the WHS Helper App",
     "license": "GPL-3.0",
     "scripts": {

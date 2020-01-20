@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/whsha/classes/compare/v0.1.0...v0.2.0) (2020-01-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* all old imports must be prefixed with `/v2` since the spec has been moved to that directory
+
+### Features
+
+* hold old versions in their respective folders ([cd30d02](https://github.com/whsha/classes/commit/cd30d0265425b854cb3e5c83c4aaf5801aba86f0))
+
 ## 0.1.0 (2020-01-20)
 
 
