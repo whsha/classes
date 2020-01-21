@@ -4,9 +4,9 @@
 
 import { BlockColor } from "../blocks/blockColor";
 import { SchoolDay } from "../calendar/types";
-import { IDR, IMajor, IMinor } from "../classes/classes";
-import { IAdvisedClass } from "../classes/primitives";
-import { ClassType } from "../classes/type";
+import { IDR, IMajor, IMinor } from "../class/classes";
+import { IAdvisedClass } from "../class/primitives";
+import { ClassType } from "../class/type";
 
 /** A sample major */
 export const major: IMajor = {
