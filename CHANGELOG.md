@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/whsha/classes/compare/v1.0.0...v2.0.0) (2020-01-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* v1/classes => v1/class
+
+### Bug Fixes
+
+* rename directories to match old structure ([617df28](https://github.com/whsha/classes/commit/617df28cc6a32fa4144f3d45dd9890bdb3cad1dd))
+
 ## [1.0.0](https://github.com/whsha/classes/compare/v0.3.0...v1.0.0) (2020-01-20)
 
 ## [0.3.0](https://github.com/whsha/classes/compare/v0.2.0...v0.3.0) (2020-01-20)
