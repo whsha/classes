@@ -1,3 +1,4 @@
 node_modules
 *.log
-src
+*.ts
+!*.d.ts

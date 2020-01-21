@@ -3,15 +3,13 @@
     "version": "2.0.1",
     "description": "The type defintions to manage and create classes for the WHS Helper App",
     "license": "GPL-3.0",
-    "exports": {
-        "./": "./build"
-    },
     "scripts": {
         "typecheck": "tsc -p tsconfig.json --noEmit",
+        "clean": "tsc -b --clean",
         "lint": "tslint --project ./tsconfig.json",
         "build": "tsc -p tsconfig.json",
         "test": "jest --verbose",
-        "testcov": "jest --coverage --verbose"
+        "testcov": "jest --coverage --verbose",
     },
     "husky": {
         "hooks": {
