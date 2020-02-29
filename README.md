@@ -1,14 +1,18 @@
 # Classes
 > Typescript interfaces for storing a user's classes
 
-[![David](https://img.shields.io/david/whsha/classes.svg)](https://github.com/whsha/classes/network/dependencies)
 [![GitHub](https://img.shields.io/github/license/whsha/classes.svg)](https://github.com/whsha/classes/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/whsha/classes.svg)](https://github.com/whsha/classes/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/whsha/classes.svg)](https://github.com/whsha/classes/pulls)
-[![Actions Status](https://github.com/whsha/classes/workflows/Build%20And%20Publish/badge.svg)](https://github.com/whsha/classes/actions)
+[![David](https://img.shields.io/david/whsha/classes.svg)](https://github.com/whsha/classes/network/dependencies)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/whsha/classes/Build%20And%20Publish)](https://github.com/whsha/classes/actions)
 [![Codecov](https://img.shields.io/codecov/c/github/whsha/classes/master.svg)](https://codecov.io/gh/whsha/classes)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/whsha/classes)](https://github.com/whsha/classes/packages/105402)
 [![Tested with Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+This repository is split into the seperate versions, each in their own v* folder (ex. v1, v2, ...). Along side the current schema
+versions in their own section, there is a migrate folder that contains the migrations between different schema versions.
 
 # Code Coverage
 [![Coverage Over Time](https://codecov.io/gh/whsha/classes/branch/master/graphs/commits.svg)](https://codecov.io/gh/whsha/classes)
