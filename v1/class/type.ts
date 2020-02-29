@@ -19,7 +19,7 @@ export enum ClassType {
 export function hasClassType<T extends ClassType>(clazz: unknown): clazz is IClassType<T> {
     const possibleClass = clazz as Partial<IClassType<T>>;
 
-    return possibleClass.type !== undefined;
+    return clazz != undefined && possibleClass.type !== undefined;
 }
 
 /** Get the type of the class */

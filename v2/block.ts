@@ -12,6 +12,9 @@ export enum Block {
     F = "f"
 }
 
+/** The block in which lunch meets (on normal days) */
+export const LunchBlock = Block.D;
+
 /** Colors of the blocks */
 export enum BlockColor {
     Red = "Red",

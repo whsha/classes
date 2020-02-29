@@ -174,7 +174,12 @@ export function getSchoolDaysThatHaveColor(color: BlockColor): SchoolDay[] {
         .map(x => parseInt(x, 10)) as unknown[] as SchoolDay[];
 }
 
+/** Checks if a color meets on a given day */
+export function colorMeetsOnDay(color: BlockColor, day: SchoolDay) {
+    return MapOfColorsToSchoolDaysToBlocks[color][day] !== undefined;
+}
+
 /** Function to get the block that the class meets having the given block color on the given day */
-export function getBlockForColorOnDay(color: BlockColor, day: SchoolDay): Block {
+export function getBlockForColorOnDay(color: BlockColor, day: SchoolDay) {
     return MapOfColorsToSchoolDaysToBlocks[color][day] as unknown as Block;
 }

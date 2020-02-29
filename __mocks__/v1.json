@@ -1,0 +1,490 @@
+[
+    {
+        "advisory": {
+            "room": "148",
+            "teacher": "Christine Laborde-Casterot"
+        },
+        "lunches": {
+            "1": 2,
+            "2": 1,
+            "3": 2,
+            "4": 0,
+            "5": 3,
+            "6": 0,
+            "7": 2
+        },
+        "majors": {
+            "6d5c4095-1e21-4489-a1a3-bfcc1537fcb1": {
+                "type": 0,
+                "uuid": "6d5c4095-1e21-4489-a1a3-bfcc1537fcb1",
+                "teacher": "Kenneth Bateman",
+                "room": "339",
+                "lab": true,
+                "name": "AP Biology ",
+                "block": "Red"
+            },
+            "d49905af-51ce-4a45-ae14-abbb3c96edcd": {
+                "lab": false,
+                "type": 0,
+                "uuid": "d49905af-51ce-4a45-ae14-abbb3c96edcd",
+                "name": "English 12H",
+                "teacher": "Alan Brazier",
+                "room": "227",
+                "block": "Green"
+            },
+            "258bf909-4ecb-4ae8-88bd-502b45fb4a1e": {
+                "type": 0,
+                "uuid": "258bf909-4ecb-4ae8-88bd-502b45fb4a1e",
+                "name": "Biotechnology & Personal Genetics H",
+                "teacher": "Kenneth Bateman",
+                "room": "339",
+                "lab": true,
+                "block": "Blue"
+            },
+            "0e64835e-9c94-4e31-8566-6acef0cf916f": {
+                "lab": false,
+                "type": 0,
+                "uuid": "0e64835e-9c94-4e31-8566-6acef0cf916f",
+                "name": "AP Computer Science Algorithms",
+                "teacher": "Robert Cohen",
+                "room": "452",
+                "block": "Purple"
+            },
+            "68af1d6f-c1d9-4546-b9c2-2404b1d0d9a0": {
+                "lab": false,
+                "type": 0,
+                "uuid": "68af1d6f-c1d9-4546-b9c2-2404b1d0d9a0",
+                "name": "AP Statistics",
+                "teacher": "John Fantini",
+                "room": "441",
+                "block": "Tan"
+            }
+        },
+        "minors": {},
+        "DRs": {}
+    },
+    {
+        "advisory": {
+            "room": "",
+            "teacher": "Mr. Lovett"
+        },
+        "lunches": {
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 2,
+            "5": 3,
+            "6": 2,
+            "7": 1
+        },
+        "majors": {
+            "ae9dd66b-fd99-41a8-96df-03343744458b": {
+                "type": 0,
+                "uuid": "ae9dd66b-fd99-41a8-96df-03343744458b",
+                "block": "Red",
+                "name": "Biology",
+                "teacher": "Mr. G",
+                "lab": true,
+                "room": "338"
+            },
+            "3456dee7-8147-4d55-b3e3-1ac26029fb29": {
+                "lab": false,
+                "type": 0,
+                "uuid": "3456dee7-8147-4d55-b3e3-1ac26029fb29",
+                "block": "Orange",
+                "name": "English",
+                "room": "243",
+                "teacher": "Ms. McCormick"
+            },
+            "1ec5cf1d-6fa8-4044-974f-cd952e626a8a": {
+                "type": 0,
+                "uuid": "1ec5cf1d-6fa8-4044-974f-cd952e626a8a",
+                "block": "Green",
+                "name": "APES",
+                "teacher": "Mr. Bateman",
+                "room": "341",
+                "lab": true
+            },
+            "22b3368e-472f-40ec-9559-a4ea209d90a0": {
+                "lab": false,
+                "type": 0,
+                "uuid": "22b3368e-472f-40ec-9559-a4ea209d90a0",
+                "block": "Blue",
+                "name": "Pre-Calc",
+                "room": "430",
+                "teacher": "Ms. Lapato"
+            },
+            "8a368a52-cd72-47a7-b1bb-ee0fcdeba902": {
+                "lab": false,
+                "type": 0,
+                "uuid": "8a368a52-cd72-47a7-b1bb-ee0fcdeba902",
+                "block": "Tan",
+                "name": "History",
+                "room": "321",
+                "teacher": "Ms. Despo"
+            },
+            "c76f780f-29f8-416a-8bfd-d37e91949400": {
+                "lab": false,
+                "type": 0,
+                "uuid": "c76f780f-29f8-416a-8bfd-d37e91949400",
+                "block": "Purple",
+                "name": "Latin",
+                "teacher": "Mr. Esposito",
+                "room": "146"
+            }
+        },
+        "minors": {
+            "a42e0854-1e68-485d-9fcd-1b3a23805acd": {
+                "type": 1,
+                "uuid": "a42e0854-1e68-485d-9fcd-1b3a23805acd",
+                "name": "Adventure ",
+                "teacher": "Mr. Griffith",
+                "room": "Gym",
+                "block": "Yellow",
+                "meets": {
+                    "1": true,
+                    "2": false,
+                    "3": false,
+                    "4": true,
+                    "5": false,
+                    "6": false,
+                    "7": true
+                }
+            },
+            "5910e310-43cb-4dc3-81c7-1efe2c3f709a": {
+                "block": "No Color",
+                "type": 1,
+                "uuid": "5910e310-43cb-4dc3-81c7-1efe2c3f709a",
+                "meets": {
+                    "1": false,
+                    "2": false,
+                    "3": false,
+                    "4": true,
+                    "5": false,
+                    "6": false,
+                    "7": false
+                },
+                "name": "Guidance Seminar",
+                "teacher": "Mr. Steere",
+                "room": "306"
+            }
+        },
+        "DRs": {}
+    },
+    {
+        "advisory": {
+            "room": "",
+            "teacher": "Breizisr"
+        },
+        "lunches": {
+            "1": 2,
+            "2": 0,
+            "3": 0,
+            "4": 2,
+            "5": 1,
+            "6": 2,
+            "7": 2
+        },
+        "majors": {
+            "62eb3e02-150e-4c18-bb4d-6863433fc058": {
+                "lab": false,
+                "type": 0,
+                "uuid": "62eb3e02-150e-4c18-bb4d-6863433fc058",
+                "name": "Math",
+                "teacher": "Mr.Horne",
+                "room": "4somthing",
+                "block": "Orange"
+            },
+            "4c331e41-23e8-499c-8249-ddec45735add": {
+                "lab": false,
+                "type": 0,
+                "uuid": "4c331e41-23e8-499c-8249-ddec45735add",
+                "name": "English",
+                "teacher": "Mr.Joeseph",
+                "room": "2somthing",
+                "block": "Yellow"
+            },
+            "47920dd1-8585-4836-a50c-0dce34f17850": {
+                "lab": false,
+                "type": 0,
+                "uuid": "47920dd1-8585-4836-a50c-0dce34f17850",
+                "name": "Band",
+                "teacher": "Steve",
+                "room": "163",
+                "block": "Green"
+            },
+            "eda46515-1b82-4b81-9456-8cee7cb70d7f": {
+                "type": 0,
+                "uuid": "eda46515-1b82-4b81-9456-8cee7cb70d7f",
+                "name": "Bio",
+                "teacher": "Ms.Fuchs",
+                "room": "321",
+                "lab": true,
+                "block": "Blue"
+            },
+            "bc117daa-c453-40c2-b1c5-233a962a8a53": {
+                "lab": false,
+                "type": 0,
+                "uuid": "bc117daa-c453-40c2-b1c5-233a962a8a53",
+                "name": "Spanish ",
+                "teacher": "Sra O’Neil ",
+                "room": "242",
+                "block": "Purple"
+            },
+            "35dd2f45-d061-49d7-a3ac-0a3a50257c08": {
+                "lab": false,
+                "type": 0,
+                "uuid": "35dd2f45-d061-49d7-a3ac-0a3a50257c08",
+                "name": "History",
+                "teacher": "Mr.liacos",
+                "room": "320",
+                "block": "Tan"
+            }
+        },
+        "minors": {
+            "2c28112f-6b13-4ee7-81c0-d0cfff21e4ac": {
+                "block": "No Color",
+                "type": 1,
+                "uuid": "2c28112f-6b13-4ee7-81c0-d0cfff21e4ac",
+                "meets": {
+                    "1": false,
+                    "2": false,
+                    "3": false,
+                    "4": false,
+                    "5": true,
+                    "6": false,
+                    "7": false
+                },
+                "name": "Guidance Seminar",
+                "teacher": "Ms.Trask",
+                "room": "310"
+            }
+        },
+        "DRs": {}
+    },
+    {
+        "advisory": {
+            "room": "152",
+            "teacher": "Professor Lovett"
+        },
+        "lunches": {
+            "1": 2,
+            "2": 2,
+            "3": 1,
+            "4": 2,
+            "5": 0,
+            "6": 2,
+            "7": 2
+        },
+        "majors": {
+            "3c585ae1-2d80-442d-ae8d-026c1f96e4d7": {
+                "type": 0,
+                "uuid": "3c585ae1-2d80-442d-ae8d-026c1f96e4d7",
+                "lab": true,
+                "teacher": "Ms. Fuchs",
+                "room": "337",
+                "block": "Purple",
+                "name": "Honors Biology"
+            },
+            "b5944d6b-5cf6-4d6f-a41c-c2a64df183c7": {
+                "lab": false,
+                "type": 0,
+                "uuid": "b5944d6b-5cf6-4d6f-a41c-c2a64df183c7",
+                "name": "ACP US History",
+                "teacher": "Mrs. Sullivan",
+                "room": "418",
+                "block": "Orange"
+            },
+            "42142cef-fe09-49aa-b47a-e1e01d327034": {
+                "type": 0,
+                "uuid": "42142cef-fe09-49aa-b47a-e1e01d327034",
+                "teacher": "Dr. Van Geel",
+                "room": "437",
+                "lab": true,
+                "block": "Yellow",
+                "name": "Advanced Placement Chemistry"
+            },
+            "f2e1383f-1a85-4c74-bbea-033096b68b11": {
+                "type": 0,
+                "uuid": "f2e1383f-1a85-4c74-bbea-033096b68b11",
+                "room": "163",
+                "block": "Green",
+                "lab": false,
+                "name": "Concert Band ",
+                "teacher": "Mr. Steven Jude Scott"
+            },
+            "0141c7e5-8a56-4af1-8c33-e68a3c6ec4e2": {
+                "lab": false,
+                "type": 0,
+                "uuid": "0141c7e5-8a56-4af1-8c33-e68a3c6ec4e2",
+                "name": "ACP World Literature",
+                "teacher": "Mr. Joseph",
+                "room": "219",
+                "block": "Tan"
+            },
+            "a8b2a89a-d8b0-4580-923d-b13802500ec6": {
+                "lab": false,
+                "type": 0,
+                "uuid": "a8b2a89a-d8b0-4580-923d-b13802500ec6",
+                "teacher": "Ms. Ceretta",
+                "room": "419",
+                "block": "Red",
+                "name": "Honors Pre-Calculus"
+            }
+        },
+        "minors": {
+            "1fed4b03-765d-424c-94b8-2bd9abd87d43": {
+                "type": 1,
+                "uuid": "1fed4b03-765d-424c-94b8-2bd9abd87d43",
+                "block": "Blue",
+                "name": "Fitness Center",
+                "meets": {
+                    "1": true,
+                    "2": false,
+                    "3": true,
+                    "4": false,
+                    "5": true,
+                    "6": false,
+                    "7": false
+                },
+                "teacher": "Wass",
+                "room": "Fitness center"
+            },
+            "e3d1e5c4-4583-4d41-b8fa-288d9ba08471": {
+                "block": "No Color",
+                "type": 1,
+                "uuid": "e3d1e5c4-4583-4d41-b8fa-288d9ba08471",
+                "meets": {
+                    "1": false,
+                    "2": false,
+                    "3": false,
+                    "4": false,
+                    "5": true,
+                    "6": false,
+                    "7": false
+                },
+                "name": "Junior guidance seminar",
+                "teacher": "Mrs trask",
+                "room": "310"
+            }
+        },
+        "DRs": {}
+    },
+    {
+        "advisory": {
+            "room": "Second Floor",
+            "teacher": "Ms. Moniz"
+        },
+        "lunches": {
+            "1": 2,
+            "2": 2,
+            "3": 1,
+            "4": 2,
+            "5": 0,
+            "6": 2,
+            "7": 2
+        },
+        "majors": {
+            "232eef46-2881-49f8-9e2a-029e756b1e4e": {
+                "lab": false,
+                "type": 0,
+                "uuid": "232eef46-2881-49f8-9e2a-029e756b1e4e",
+                "name": "Band",
+                "teacher": "Mr. Scott",
+                "room": "Band Room",
+                "block": "Green"
+            },
+            "6ae99c1f-8204-4c2c-90fb-a9c28063e5d6": {
+                "lab": false,
+                "type": 0,
+                "uuid": "6ae99c1f-8204-4c2c-90fb-a9c28063e5d6",
+                "name": "History",
+                "teacher": "Dr. Cacace",
+                "room": "410",
+                "block": "Red"
+            },
+            "99cacc6c-b27a-4078-96ae-735606e0a234": {
+                "lab": false,
+                "type": 0,
+                "uuid": "99cacc6c-b27a-4078-96ae-735606e0a234",
+                "name": "French",
+                "teacher": "Madame Nkam",
+                "room": "239",
+                "block": "Orange"
+            },
+            "322bd30a-e09f-44fd-ba90-b08b38b1eda0": {
+                "type": 0,
+                "uuid": "322bd30a-e09f-44fd-ba90-b08b38b1eda0",
+                "name": "Biology",
+                "teacher": "Ms. Morrison",
+                "room": "338",
+                "lab": true,
+                "block": "Yellow"
+            },
+            "22f95b72-2db4-4057-875d-0270f815affe": {
+                "lab": false,
+                "type": 0,
+                "uuid": "22f95b72-2db4-4057-875d-0270f815affe",
+                "name": "Math",
+                "teacher": "Ms. Wohler",
+                "room": "450",
+                "block": "Blue"
+            },
+            "41d015d9-ed3f-427b-bb03-958232c09d0e": {
+                "lab": false,
+                "type": 0,
+                "uuid": "41d015d9-ed3f-427b-bb03-958232c09d0e",
+                "block": "Purple",
+                "name": "Free",
+                "teacher": "None",
+                "room": "None"
+            },
+            "77c9a1a6-d43c-47d4-8d68-37e6a2d9c59a": {
+                "lab": false,
+                "type": 0,
+                "uuid": "77c9a1a6-d43c-47d4-8d68-37e6a2d9c59a",
+                "name": "English",
+                "teacher": "Mr. Brazier ",
+                "room": "227",
+                "block": "Tan"
+            }
+        },
+        "minors": {
+            "7bc54277-032a-49ff-8dc2-47c48f3f05c5": {
+                "block": "No Color",
+                "type": 1,
+                "uuid": "7bc54277-032a-49ff-8dc2-47c48f3f05c5",
+                "meets": {
+                    "1": true,
+                    "2": false,
+                    "3": true,
+                    "4": false,
+                    "5": true,
+                    "6": false,
+                    "7": false
+                },
+                "name": "Power Up",
+                "teacher": "Brophy ",
+                "room": "202"
+            },
+            "54531ca8-e15e-4ec7-ab47-3d95dc6a3f71": {
+                "block": "No Color",
+                "type": 1,
+                "uuid": "54531ca8-e15e-4ec7-ab47-3d95dc6a3f71",
+                "meets": {
+                    "1": false,
+                    "2": false,
+                    "3": false,
+                    "4": false,
+                    "5": false,
+                    "6": false,
+                    "7": true
+                },
+                "name": "Guidance",
+                "teacher": "Barrell ",
+                "room": "357"
+            }
+        },
+        "DRs": {}
+    }
+]

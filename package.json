@@ -35,7 +35,9 @@
         "typescript": "^3.7.4"
     },
     "dependencies": {
-        "dayjs": "^1.8.19"
+        "dayjs": "^1.8.19",
+        "mobx": "^5.15.4",
+        "mobx-persist": "^0.4.1"
     },
     "jest": {
         "preset": "ts-jest",
