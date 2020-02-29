@@ -10,7 +10,7 @@
         "build": "tsc -p tsconfig.json",
         "test": "jest --verbose",
         "testcov": "jest --coverage --verbose",
-        "release": "standard-version"
+        "release": "standard-version --sign"
     },
     "husky": {
         "hooks": {
