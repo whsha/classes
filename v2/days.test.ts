@@ -3,7 +3,7 @@
  */
 
 import { BlockColor } from "./block";
-import { getBlockColorsForDay, getLabBlockColorForDay, getLunchBlockColorForDay } from "./days";
+import { getBlockColorsForDay, getLabBlockColorForDay, getLunchBlockColorForDay, getSchoolDaysThatHaveColor } from "./days";
 import { SchoolDay } from "./schoolDay";
 
 describe("Tests utility functions for days", () => {
@@ -27,5 +27,15 @@ describe("Tests utility functions for days", () => {
         expect(getLunchBlockColorForDay(SchoolDay.One)).toStrictEqual(BlockColor.Green);
         expect(getLunchBlockColorForDay(SchoolDay.Five)).toStrictEqual(BlockColor.Yellow);
         expect(getLunchBlockColorForDay(SchoolDay.Seven)).toStrictEqual(BlockColor.Green);
+    });
+
+    it("Correctly calculates getSchoolDaysThatHaveColor", () => {
+        expect(getSchoolDaysThatHaveColor(BlockColor.Red)).toMatchSnapshot();
+        expect(getSchoolDaysThatHaveColor(BlockColor.Orange)).toMatchSnapshot();
+        expect(getSchoolDaysThatHaveColor(BlockColor.Yellow)).toMatchSnapshot();
+        expect(getSchoolDaysThatHaveColor(BlockColor.Green)).toMatchSnapshot();
+        expect(getSchoolDaysThatHaveColor(BlockColor.Blue)).toMatchSnapshot();
+        expect(getSchoolDaysThatHaveColor(BlockColor.Purple)).toMatchSnapshot();
+        expect(getSchoolDaysThatHaveColor(BlockColor.Tan)).toMatchSnapshot();
     });
 });
