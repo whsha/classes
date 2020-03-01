@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 1`] = `
+Object {
+  "a": "No Color",
+  "b": "Orange",
+  "c": "Yellow",
+  "d": "Green",
+  "e": "Red",
+  "f": "Blue",
+}
+`;
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 2`] = `
+Object {
+  "a": "No Color",
+  "b": "Yellow",
+  "c": "Orange",
+  "d": "Tan",
+  "e": "Red",
+  "f": "Purple",
+}
+`;
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 3`] = `
+Object {
+  "a": "No Color",
+  "b": "Green",
+  "c": "Orange",
+  "d": "Tan",
+  "e": "Purple",
+  "f": "Blue",
+}
+`;
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 4`] = `
+Object {
+  "a": "No Color",
+  "b": "Tan",
+  "c": "Yellow",
+  "d": "Green",
+  "e": "Red",
+  "f": "Blue",
+}
+`;
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 5`] = `
+Object {
+  "a": "No Color",
+  "b": "Red",
+  "c": "Orange",
+  "d": "Yellow",
+  "e": "Purple",
+  "f": "Blue",
+}
+`;
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 6`] = `
+Object {
+  "a": "No Color",
+  "b": "Purple",
+  "c": "Orange",
+  "d": "Green",
+  "e": "Tan",
+  "f": "Red",
+}
+`;
+
+exports[`Tests utility functions for days Correctly calculates getBlockColorsForDay 7`] = `
+Object {
+  "a": "No Color",
+  "b": "Blue",
+  "c": "Yellow",
+  "d": "Green",
+  "e": "Tan",
+  "f": "Purple",
+}
+`;

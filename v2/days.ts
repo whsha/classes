@@ -2,7 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
-import { Block, BlockColor } from "./block";
+import { Block, BlockColor, LunchBlock } from "./block";
 import { SchoolDay } from "./schoolDay";
 
 /** A map of the blocks to their schooldays to their colors */
@@ -165,7 +165,7 @@ export function getLabBlockColorForDay(day: SchoolDay) {
 
 /** Function to get the block color that has a lunch on the given day */
 export function getLunchBlockColorForDay(day: SchoolDay) {
-    return MapOfBlocksToColor[Block.D][day];
+    return MapOfBlocksToColor[LunchBlock][day];
 }
 
 /** Function to get the school days that have a specific color */
