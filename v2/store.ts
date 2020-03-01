@@ -48,7 +48,7 @@ type PreparedClassesv2 = {
 };
 
 /** Store containig the users classes prepared in a way for viewing */
-export class PreparedClassesStorev2 {
+export class PreparedClassesStorev2 extends ClassesStorev2 {
     /** The classes mapped into a format that can easily be searched through for a today view */
     @persist("object") @observable
     public prepared: PreparedClassesv2 = {
@@ -72,14 +72,6 @@ export class PreparedClassesStorev2 {
         [SchoolDay.Six]: Lunch.None,
         [SchoolDay.Seven]: Lunch.None
     };
-
-    /** A map of the users Classes by their uuid */
-    @persist("map") @observable
-    public classes = new Map<string, IClass>();
-
-    /** The advisory */
-    @persist("object") @observable
-    public advisory: IAdvisory = { room: "", advisor: "" };
 
     /** Prepare classes from a classes store */
     // tslint:disable-next-line: no-unbound-method
@@ -127,6 +119,8 @@ export class PreparedClassesStorev2 {
     // tslint:disable-next-line: no-unbound-method
     @action.bound
     public clear() {
+        super.clear();
+
         this.prepared = {
             [SchoolDay.One]: {},
             [SchoolDay.Two]: {},
@@ -136,8 +130,6 @@ export class PreparedClassesStorev2 {
             [SchoolDay.Six]: {},
             [SchoolDay.Seven]: {}
         };
-        this.classes.clear();
-        this.advisory = { room: "", advisor: "" };
         this.lunches = {
             [SchoolDay.One]: Lunch.None,
             [SchoolDay.Two]: Lunch.None,
