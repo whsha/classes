@@ -75,7 +75,7 @@ export class ClassesStorev1 {
 }
 
 /** A way of storing classes that is easy to use for a today view */
-type PreparedClassesv1 = {
+export type PreparedClassesv1 = {
     [K in SchoolDay]: {
         [B in Block]?: IMajor | IMinor | IDR
     }
