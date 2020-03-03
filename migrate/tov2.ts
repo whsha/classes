@@ -2,8 +2,10 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { v4 as uuidv4 } from "uuid";
 import { ClassesStorev1 } from "../v1/store";
 import { LunchBlock } from "../v2/block";
+import { IAdvisory } from "../v2/class";
 import { colorMeetsOnDay, getBlockForColorOnDay } from "../v2/days";
 import { SchoolDay } from "../v2/schoolDay";
 import { Semester } from "../v2/semester";
@@ -16,7 +18,21 @@ export default function migratetov2(v1: ClassesStorev1): ClassesStorev2 {
     const v2 = new ClassesStorev2();
 
     // Set the advisory to the same as the v1
-    v2.advisory = { advisor: v1.advisory.teacher, room: v1.advisory.room };
+    const advisory: IAdvisory = {
+        advisor: v1.advisory.teacher,
+        meets: {
+            [SchoolDay.One]: true,
+            [SchoolDay.Two]: true,
+            [SchoolDay.Three]: true,
+            [SchoolDay.Four]: true,
+            [SchoolDay.Five]: true,
+            [SchoolDay.Six]: true,
+            [SchoolDay.Seven]: true
+        },
+        room: v1.advisory.room,
+        uuid: uuidv4()
+    };
+    v2.advisories.set(advisory.uuid, advisory);
 
     // Loop through majors
     for (const [uuid, major] of v1.majors) {

@@ -15,7 +15,7 @@ export function comparev1v2(v1: PreparedClassesStorev1, v2: PreparedClassesStore
     for (const day of Object.values(SchoolDay).filter(key => isNaN(Number(SchoolDay[key as unknown as keyof typeof SchoolDay]))) as unknown as SchoolDay[]) {
         for (const block of Object.values(Block)) {
             const v1class = v1.prepared[day][block];
-            const v2class = v2.classes.get(v2.prepared[day][block] ?? "");
+            const v2class = v2.getClassAtBlockOnDay(block, day);
 
             // Compare various parts
             expect(v1class?.block).toStrictEqual(v2class?.block);
@@ -53,9 +53,13 @@ export function comparev1v2(v1: PreparedClassesStorev1, v2: PreparedClassesStore
     }
 
     // Compare the advisories
-    expect(v1.advisory.teacher).toStrictEqual(v2.advisory.advisor);
-    expect(v1.advisory.room).toStrictEqual(v2.advisory.room);
+    for (const day of Object.values(SchoolDay).filter(key => isNaN(Number(SchoolDay[key as unknown as keyof typeof SchoolDay]))) as unknown as SchoolDay[]) {
+        expect(v1.advisory.teacher).toStrictEqual(v2.getAdvisoryForDay(day)?.advisor);
+        expect(v1.advisory.room).toStrictEqual(v2.getAdvisoryForDay(day)?.room);
+    }
 
     // Compare the lunches
-    expect(v1.lunches).toStrictEqual(v2.lunches);
+    for (const day of Object.values(SchoolDay).filter(key => isNaN(Number(SchoolDay[key as unknown as keyof typeof SchoolDay]))) as unknown as SchoolDay[]) {
+        expect(v1.lunches[day]).toStrictEqual(v2.getLunchForDay(day));
+    }
 }

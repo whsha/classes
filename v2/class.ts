@@ -7,13 +7,19 @@ import { Lunch } from "./lunch";
 import { SchoolDay } from "./schoolDay";
 import { Semester } from "./semester";
 
-/** The advisory object, missing a class type due to the fact that there only ever is one and storage can be smplified */
+/** The advisory object */
 export interface IAdvisory {
+    /** The class UUID for identifying the advisory */
+    readonly uuid: string;
+
     /** The advisor for the advisory */
     advisor: string;
 
     /** The room number or name the advisory takes place in */
     room: string;
+
+    /** The school days when the advisory meets */
+    meets: MeetDays;
 }
 
 /** The most basic information needed to identify a major */
@@ -56,7 +62,7 @@ export type Lunches = { [K in SchoolDay]?: Lunch };
 export type Semesters = { [K in Semester]: boolean };
 
 /** Get the count of times the class meets */
-export function timesClassMeetsPerCycle({ meets }: IClass): number {
+export function timesClassMeetsPerCycle(meets: MeetDays): number {
     return (
         (meets[SchoolDay.One] ? 1 : 0) +
         (meets[SchoolDay.Two] ? 1 : 0) +
@@ -69,7 +75,7 @@ export function timesClassMeetsPerCycle({ meets }: IClass): number {
 }
 
 /** Get the school days a class meets */
-export function daysClassMeets({ meets }: IClass): SchoolDay[] {
+export function daysClassMeets(meets: MeetDays): SchoolDay[] {
     return Object.keys(meets)
         .filter(x => meets[(x as unknown) as keyof MeetDays])
         .map(x => parseInt(x, 10)) as unknown[] as SchoolDay[];

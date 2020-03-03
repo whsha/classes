@@ -2,9 +2,21 @@
 
 exports[`Test that no regressions occur in the migration using snapshots Migrate class 0 1`] = `
 Object {
-  "advisory": Object {
-    "advisor": "Christine Laborde-Casterot",
-    "room": "148",
+  "advisories": Object {
+    "4be5a0b2-ea3f-4c8c-8992-bcb30142bbb0": Object {
+      "advisor": "Christine Laborde-Casterot",
+      "meets": Object {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+      },
+      "room": "148",
+      "uuid": "4be5a0b2-ea3f-4c8c-8992-bcb30142bbb0",
+    },
   },
   "classes": Object {
     "0e64835e-9c94-4e31-8566-6acef0cf916f": Object {
@@ -163,9 +175,21 @@ Object {
 
 exports[`Test that no regressions occur in the migration using snapshots Migrate class 1 1`] = `
 Object {
-  "advisory": Object {
-    "advisor": "Mr. Lovett",
-    "room": "",
+  "advisories": Object {
+    "1d06f89c-622f-4202-9a95-540f644c27a3": Object {
+      "advisor": "Mr. Lovett",
+      "meets": Object {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+      },
+      "room": "",
+      "uuid": "1d06f89c-622f-4202-9a95-540f644c27a3",
+    },
   },
   "classes": Object {
     "1ec5cf1d-6fa8-4044-974f-cd952e626a8a": Object {
@@ -414,9 +438,21 @@ Object {
 
 exports[`Test that no regressions occur in the migration using snapshots Migrate class 2 1`] = `
 Object {
-  "advisory": Object {
-    "advisor": "Breizisr",
-    "room": "",
+  "advisories": Object {
+    "865835b6-077d-499c-a64e-3030d0ca0394": Object {
+      "advisor": "Breizisr",
+      "meets": Object {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+      },
+      "room": "",
+      "uuid": "865835b6-077d-499c-a64e-3030d0ca0394",
+    },
   },
   "classes": Object {
     "2c28112f-6b13-4ee7-81c0-d0cfff21e4ac": Object {
@@ -635,9 +671,21 @@ Object {
 
 exports[`Test that no regressions occur in the migration using snapshots Migrate class 3 1`] = `
 Object {
-  "advisory": Object {
-    "advisor": "Professor Lovett",
-    "room": "152",
+  "advisories": Object {
+    "58cf3ace-9d19-4e71-a886-e936205159d8": Object {
+      "advisor": "Professor Lovett",
+      "meets": Object {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+      },
+      "room": "152",
+      "uuid": "58cf3ace-9d19-4e71-a886-e936205159d8",
+    },
   },
   "classes": Object {
     "0141c7e5-8a56-4af1-8c33-e68a3c6ec4e2": Object {
@@ -886,9 +934,21 @@ Object {
 
 exports[`Test that no regressions occur in the migration using snapshots Migrate class 4 1`] = `
 Object {
-  "advisory": Object {
-    "advisor": "Ms. Moniz",
-    "room": "Second Floor",
+  "advisories": Object {
+    "62c9cf15-f8a8-4cd7-9a92-ee4a1961912f": Object {
+      "advisor": "Ms. Moniz",
+      "meets": Object {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+      },
+      "room": "Second Floor",
+      "uuid": "62c9cf15-f8a8-4cd7-9a92-ee4a1961912f",
+    },
   },
   "classes": Object {
     "22f95b72-2db4-4057-875d-0270f815affe": Object {
@@ -1167,9 +1227,21 @@ Object {
 
 exports[`Test that no regressions occur in the migration using snapshots Migrate class 5 1`] = `
 Object {
-  "advisory": Object {
-    "advisor": "Ms. Spangler",
-    "room": "337",
+  "advisories": Object {
+    "4b2a1655-4501-428d-9160-ce59cf8c74f5": Object {
+      "advisor": "Ms. Spangler",
+      "meets": Object {
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+      },
+      "room": "337",
+      "uuid": "4b2a1655-4501-428d-9160-ce59cf8c74f5",
+    },
   },
   "classes": Object {
     "0baa5d8e-02a8-4ecc-8b5a-ab1eff1d8b50": Object {

@@ -32,11 +32,11 @@ export function parsev2(json: unknown): ClassesStorev2 {
     const parsed = json as Partial<ClassesStorev2>;
     const store = new ClassesStorev2();
 
-    if (parsed.advisory === undefined
+    if (parsed.advisories === undefined
         || parsed.classes === undefined) {
         throw new Error();
     }
-    store.advisory = parsed.advisory;
+    store.advisories = observable.map(parsed.advisories);
     store.classes = observable.map(parsed.classes);
 
     return store;
