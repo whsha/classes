@@ -56,7 +56,9 @@ export class ClassesStorev2 {
 
     /** Method to get the string representation of the store */
     public toString() {
-        return JSON.stringify({ adisories: this.advisories, classes: this.classes });
+        return JSON.stringify(toJS<Pick<ClassesStorev2, PropertiesOf<ClassesStorev2>>>({
+            advisories: this.advisories, classes: this.classes
+        }));
     }
 
     /** Method to parse a ClassesStorev2 from a json string */
