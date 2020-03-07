@@ -9,6 +9,7 @@ import parsev1 from "../v1/parse";
 import { PreparedClassesStorev1 } from "../v1/store";
 import { PreparedClassesStorev2 } from "../v2/store";
 import migratetov2 from "./tov2";
+jest.mock("uuid");
 
 /** Mock v1 classes */
 const mockClasses = mocks.map(parsev1);
