@@ -37,6 +37,7 @@
         "typescript": "^3.7.4"
     },
     "dependencies": {
+        "@badrap/result": "^0.2.6",
         "dayjs": "^1.8.19",
         "mobx": "^5.15.4",
         "mobx-persist": "^0.4.1",

@@ -3,11 +3,10 @@
  */
 
 import { observable } from "mobx";
-import { ClassesStorev1 } from "../v1/store";
-import { ClassesStorev2 } from "../v2/store";
+import { ClassesStorev1 } from "./store";
 
-/** Method to parse the v1 classes from their json form */
-export function parsev1(json: unknown): ClassesStorev1 {
+/** Method to parse the v1 classes from their json form since the v1 store has no such ability */
+export default function parsev1(json: unknown): ClassesStorev1 {
     const parsed = json as Partial<ClassesStorev1>;
     const store = new ClassesStorev1();
 
@@ -23,21 +22,6 @@ export function parsev1(json: unknown): ClassesStorev1 {
     store.majors = observable.map(parsed.majors);
     store.minors = observable.map(parsed.minors);
     store.lunches = parsed.lunches;
-
-    return store;
-}
-
-/** Method to parse the v1 classes from their json form */
-export function parsev2(json: unknown): ClassesStorev2 {
-    const parsed = json as Partial<ClassesStorev2>;
-    const store = new ClassesStorev2();
-
-    if (parsed.advisories === undefined
-        || parsed.classes === undefined) {
-        throw new Error();
-    }
-    store.advisories = observable.map(parsed.advisories);
-    store.classes = observable.map(parsed.classes);
 
     return store;
 }

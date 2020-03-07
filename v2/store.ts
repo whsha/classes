@@ -2,6 +2,7 @@
  * Copyright (C) 2018-2020  Zachary Kohnen (DusterTheFirst)
  */
 
+import { Result } from "@badrap/result";
 import { action, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
 import { Block, LunchBlock } from "./block";
@@ -9,6 +10,20 @@ import { daysClassMeets, IAdvisory, IClass } from "./class";
 import { getBlockForColorOnDay } from "./days";
 import { Lunch } from "./lunch";
 import { SchoolDay } from "./schoolDay";
+
+/** Type to extract the properties of a type */
+type PropertiesOf<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T];
+
+/** An error type for parsing the ClassesStorev2 from a string */
+export class ClassesStorev2MissingProp extends Error {
+    /** The parameter that is effected */
+    public readonly prop: PropertiesOf<ClassesStorev2>;
+
+    constructor(prop: PropertiesOf<ClassesStorev2>) {
+        super(`Property ${prop} is missing from the json object`);
+        this.prop = prop;
+    }
+}
 
 /** Store containig the users classes */
 export class ClassesStorev2 {
@@ -42,6 +57,24 @@ export class ClassesStorev2 {
     /** Method to get the string representation of the store */
     public toString() {
         return JSON.stringify({ adisories: this.advisories, classes: this.classes });
+    }
+
+    /** Method to parse a ClassesStorev2 from a json string */
+    public static fromString(str: string): Result<ClassesStorev2, ClassesStorev2MissingProp> {
+        const parsed = JSON.parse(str) as Partial<ClassesStorev2>;
+
+        if (parsed.advisories === undefined) {
+            return Result.err(new ClassesStorev2MissingProp("advisories"));
+        } else if (parsed.classes === undefined) {
+            return Result.err(new ClassesStorev2MissingProp("classes"));
+        }
+
+        const store = new ClassesStorev2();
+
+        store.advisories = observable.map(parsed.advisories);
+        store.classes = observable.map(parsed.classes);
+
+        return Result.ok(store);
     }
 }
 
