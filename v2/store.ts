@@ -145,17 +145,17 @@ export class PreparedClassesStorev2 extends ClassesStorev2 {
     }
 
     /** Get the adisory for the day */
-    public getAdvisoryForDay(day: SchoolDay) {
-        return this.advisories.get(this.prepared[day].advisory);
+    public getAdvisoryForDay(day: SchoolDay): IAdvisory {
+        return this.advisories.get(this.prepared[day].advisory) as IAdvisory;
     }
 
     /** Get the lunch for the day */
-    public getLunchForDay(day: SchoolDay) {
+    public getLunchForDay(day: SchoolDay): Lunch {
         return this.prepared[day].lunch;
     }
 
     /** Get the class that meets at the specified block on the specified day */
-    public getClassAtBlockOnDay(block: Block, day: SchoolDay) {
+    public getClassAtBlockOnDay(block: Block, day: SchoolDay): IClass | undefined {
         return this.classes.get(this.getClassesForDay(day)[block] ?? "");
     }
 
