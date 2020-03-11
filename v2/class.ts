@@ -53,7 +53,7 @@ export interface IClass {
 }
 
 /** A map of the days that a class meet */
-export type MeetDays = { [K in SchoolDay]: boolean };
+export type MeetDays<T = boolean> = { [K in SchoolDay]: T };
 
 /** A map of the days that a class has lunch */
 export type Lunches = { [K in SchoolDay]?: Lunch };

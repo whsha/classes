@@ -3,16 +3,14 @@
  */
 
 import { Result } from "@badrap/result";
-import { action, observable, toJS } from "mobx";
+import { action, computed, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
-import { Block, LunchBlock } from "./block";
-import { daysClassMeets, IAdvisory, IClass } from "./class";
-import { getBlockForColorOnDay } from "./days";
-import { Lunch } from "./lunch";
-import { SchoolDay } from "./schoolDay";
+import { daysClassMeets, IAdvisory, IClass, MeetDays, timesClassMeetsPerCycle } from "./class";
+import { IConflict, IProblem, ProblemMap, Severity } from "./problems";
+import { SCHOOL_DAYS, SchoolDay } from "./schoolDay";
 
 /** Type to extract the properties of a type */
-type PropertiesOf<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T];
+export type PropertiesOf<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T];
 
 /** An error type for parsing the ClassesStorev2 from a string */
 export class ClassesStorev2MissingProp extends Error {
@@ -56,7 +54,7 @@ export class ClassesStorev2 {
 
     /** Method to get the string representation of the store */
     public toString() {
-        return JSON.stringify(toJS<Pick<ClassesStorev2, PropertiesOf<ClassesStorev2>>>({
+        return JSON.stringify(toJS<Pick<ClassesStorev2, "advisories" | "classes">>({
             advisories: this.advisories, classes: this.classes
         }));
     }
@@ -78,133 +76,109 @@ export class ClassesStorev2 {
 
         return Result.ok(store);
     }
-}
 
-/** A way of storing classes that is easy to use for a today view */
-export type PreparedClassesv2 = {
-    [K in SchoolDay]: {
-        /** The classes that meet on the day */
-        classes: {
-            [B in Block]?: string;
+    /** The problems with the classes in the store */
+    @computed
+    public get classProblems() {
+        return 0;
+    }
+
+    /** The problems with the advisories in the store */
+    @computed
+    public get advisoryProblems() {
+        const map = new ProblemMap<AdvisoryProblems>();
+
+        const advisoriesMeets: MeetDays<string[]> = {
+            [SchoolDay.One]: [],
+            [SchoolDay.Two]: [],
+            [SchoolDay.Three]: [],
+            [SchoolDay.Four]: [],
+            [SchoolDay.Five]: [],
+            [SchoolDay.Six]: [],
+            [SchoolDay.Seven]: [],
         };
-        /** The advisory for the day */
-        advisory: string;
-        /** The lunch for the day */
-        lunch: Lunch;
-    }
-};
 
-/** A constant of the empty prepared classes */
-const EMPTY_PREPARED_CLASSES: PreparedClassesv2 = {
-    [SchoolDay.One]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    },
-    [SchoolDay.Two]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    },
-    [SchoolDay.Three]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    },
-    [SchoolDay.Four]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    },
-    [SchoolDay.Five]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    },
-    [SchoolDay.Six]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    },
-    [SchoolDay.Seven]: {
-        advisory: "",
-        classes: {},
-        lunch: Lunch.None
-    }
-};
+        for (const [uuid, advisory] of this.advisories) {
+            // Empty advisor
+            if (advisory.advisor === "") {
+                map.add(uuid, {
+                    field: "advisor",
+                    problem: PossibleProblem.EmptyText,
+                    severity: Severity.Warn
+                });
+            }
+            // Empty room
+            if (advisory.room === "") {
+                map.add(uuid, {
+                    field: "room",
+                    problem: PossibleProblem.EmptyText,
+                    severity: Severity.Warn
+                });
+            }
 
-/** Store containig the users classes prepared in a way for viewing */
-export class PreparedClassesStorev2 extends ClassesStorev2 {
-    /** The classes mapped into a format that can easily be searched through for a today view */
-    @persist("object") @observable
-    private prepared = EMPTY_PREPARED_CLASSES;
+            // If it never meets, add an error
+            if (timesClassMeetsPerCycle(advisory.meets) === 0) {
+                map.add(uuid, {
+                    field: "meets",
+                    problem: PossibleProblem.NoMeetSelected,
+                    severity: Severity.Error
+                });
+            } else {
+                // Loop through each day it does meet
+                for (const schoolDay of daysClassMeets(advisory.meets)) {
+                    // If there are other advisories on that day, add them as conflicts
+                    for (const other of advisoriesMeets[schoolDay]) {
+                        map.add(uuid, {
+                            conflict: other,
+                            field: "meets",
+                            problem: PossibleProblem.ConflictingMeet,
+                            severity: Severity.Error
+                        });
+                    }
 
-    /** Get the classes for the day */
-    public getClassesForDay(day: SchoolDay) {
-        return this.prepared[day].classes;
-    }
-
-    /** Get the adisory for the day */
-    public getAdvisoryForDay(day: SchoolDay): IAdvisory {
-        return this.advisories.get(this.prepared[day].advisory) as IAdvisory;
-    }
-
-    /** Get the lunch for the day */
-    public getLunchForDay(day: SchoolDay): Lunch {
-        return this.prepared[day].lunch;
-    }
-
-    /** Get the class that meets at the specified block on the specified day */
-    public getClassAtBlockOnDay(block: Block, day: SchoolDay): IClass | undefined {
-        return this.classes.get(this.getClassesForDay(day)[block] ?? "");
-    }
-
-    /** Prepare classes from a classes store */
-    // tslint:disable-next-line: no-unbound-method
-    @action.bound
-    public prepare(classes: ClassesStorev2) {
-        // Clone store as to not link to it
-        const unlinkedClasses = toJS(classes, { recurseEverything: true, exportMapsAsObjects: false });
-
-        this.advisories = unlinkedClasses.advisories;
-        this.classes = unlinkedClasses.classes;
-
-        const prepared = EMPTY_PREPARED_CLASSES;
-
-        for (const clazz of unlinkedClasses.classes.values()) {
-            for (const schoolDay of daysClassMeets(clazz.meets)) {
-                const block = getBlockForColorOnDay(clazz.block, schoolDay);
-
-                prepared[schoolDay].classes[block] = clazz.uuid;
-
-                // Load lunch
-                if (block === LunchBlock) {
-                    // tslint:disable-next-line: no-non-null-assertion
-                    prepared[schoolDay].lunch = clazz.lunches[schoolDay]!;
-                }
-
-                // Lab block
-                if (block === Block.B && clazz.lab) {
-                    prepared[schoolDay].classes[Block.A] = clazz.uuid;
+                    // Add itself to the list
+                    advisoriesMeets[schoolDay].push(uuid);
                 }
             }
         }
 
-        for (const advisory of unlinkedClasses.advisories.values()) {
-            for (const schoolDay of daysClassMeets(advisory.meets)) {
-                prepared[schoolDay].advisory = advisory.uuid;
-            }
+        // If there is not at least one advisory per day, add the error
+        if (SCHOOL_DAYS.some(x => advisoriesMeets[x].length === 0)) {
+            map.add(ProblemMap.ALL_KEY, {
+                field: "meets",
+                problem: PossibleProblem.NotEnoughMeet,
+                severity: Severity.Error
+            });
         }
 
-        this.prepared = prepared;
-    }
-
-    /** Clear the classes store */
-    // tslint:disable-next-line: no-unbound-method
-    @action.bound
-    public clear() {
-        super.clear();
-
-        this.prepared = EMPTY_PREPARED_CLASSES;
+        return map;
     }
 }
+
+/** Errors that can occur with a meets field */
+export enum PossibleProblem {
+    // Text field problems
+    EmptyText,
+
+    // Meet field problems
+    NoMeetSelected,
+    InvalidMeetSelected,
+    ConflictingMeet,
+    NotEnoughMeet,
+
+    // Lab field problems
+    LabOverlaps,
+
+    // Color block field problems
+    NoBlockColorSelected,
+    ConflictingBlockColor,
+
+    // Semester field problems
+    NoSemesterSelected
+}
+
+/** Problems for an advisory */
+export type AdvisoryProblems =
+    IProblem<IAdvisory, "advisor" | "room", PossibleProblem.EmptyText, Severity.Warn>
+    | IProblem<IAdvisory, "meets", PossibleProblem.NoMeetSelected | PossibleProblem.NotEnoughMeet, Severity.Error>
+    | IConflict<IAdvisory, "meets", PossibleProblem.ConflictingMeet>;

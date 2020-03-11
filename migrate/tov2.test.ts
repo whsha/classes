@@ -7,7 +7,7 @@ import { comparev1v2 } from "../__mocks__/compare";
 import mocks from "../__mocks__/v1.json";
 import parsev1 from "../v1/parse";
 import { PreparedClassesStorev1 } from "../v1/store";
-import { PreparedClassesStorev2 } from "../v2/store";
+import { PreparedClassesStorev2 } from "../v2/prepared";
 import migratetov2 from "./tov2";
 jest.mock("uuid");
 

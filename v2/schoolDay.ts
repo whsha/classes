@@ -12,3 +12,6 @@ export enum SchoolDay {
     Six = 6,
     Seven = 7
 }
+
+/** An array of all of the school days */
+export const SCHOOL_DAYS = Object.values(SchoolDay).filter(key => isNaN(Number(SchoolDay[key as unknown as keyof typeof SchoolDay]))) as unknown as SchoolDay[];

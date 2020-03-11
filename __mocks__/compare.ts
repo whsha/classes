@@ -7,12 +7,13 @@ import { SchoolDay } from "../v1/calendar/types";
 import { hasClassType, isDR, isMajor } from "../v1/class/type";
 import { PreparedClassesStorev1 } from "../v1/store";
 import { colorMeetsOnDay } from "../v2/days";
-import { PreparedClassesStorev2 } from "../v2/store";
+import { PreparedClassesStorev2 } from "../v2/prepared";
+import { SCHOOL_DAYS } from "../v2/schoolDay";
 
 /** Custom deep comparison between the v1 and v2 classes */
 export function comparev1v2(v1: PreparedClassesStorev1, v2: PreparedClassesStorev2) {
     // Compare the classes
-    for (const day of Object.values(SchoolDay).filter(key => isNaN(Number(SchoolDay[key as unknown as keyof typeof SchoolDay]))) as unknown as SchoolDay[]) {
+    for (const day of SCHOOL_DAYS) {
         for (const block of Object.values(Block)) {
             const v1class = v1.prepared[day][block];
             const v2class = v2.getClassAtBlockOnDay(block, day);
