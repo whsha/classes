@@ -59,7 +59,7 @@ export type MeetDays<T = boolean> = { [K in SchoolDay]: T };
 export type Lunches = { [K in SchoolDay]?: Lunch };
 
 /** A map of the semesters that a class meets */
-export type Semesters = { [K in Semester]: boolean };
+export type Semesters<T = boolean> = { [K in Semester]: T };
 
 /** Get the count of times the class meets */
 export function timesClassMeetsPerCycle(meets: MeetDays): number {

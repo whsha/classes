@@ -5,9 +5,10 @@
 import { Result } from "@badrap/result";
 import { action, computed, observable, toJS } from "mobx";
 import { persist } from "mobx-persist";
-import { daysClassMeets, IAdvisory, IClass, MeetDays, timesClassMeetsPerCycle } from "./class";
-import { IConflict, IProblem, ProblemMap, Severity } from "./problems";
+import { daysClassMeets, IAdvisory, IClass, MeetDays, Semesters, timesClassMeetsPerCycle } from "./class";
+import { IConflict, IError, IWarning, Problem, ProblemMap, Severity } from "./problems";
 import { SCHOOL_DAYS, SchoolDay } from "./schoolDay";
+import { Semester } from "./semester";
 
 /** Type to extract the properties of a type */
 export type PropertiesOf<T> = { [P in keyof T]: T[P] extends Function ? never : P }[keyof T];
@@ -80,7 +81,57 @@ export class ClassesStorev2 {
     /** The problems with the classes in the store */
     @computed
     public get classProblems() {
-        return 0;
+        const map = new ProblemMap<ClassProblems>();
+
+        const classesMeets: Semesters<MeetDays<string[]>> = {
+            [Semester.First]: {
+                [SchoolDay.One]: [],
+                [SchoolDay.Two]: [],
+                [SchoolDay.Three]: [],
+                [SchoolDay.Four]: [],
+                [SchoolDay.Five]: [],
+                [SchoolDay.Six]: [],
+                [SchoolDay.Seven]: [],
+            },
+            [Semester.Second]: {
+                [SchoolDay.One]: [],
+                [SchoolDay.Two]: [],
+                [SchoolDay.Three]: [],
+                [SchoolDay.Four]: [],
+                [SchoolDay.Five]: [],
+                [SchoolDay.Six]: [],
+                [SchoolDay.Seven]: [],
+            }
+        };
+
+        for (const [uuid, clazz] of this.classes) {
+            // Empty Name
+            if (clazz.name === "") {
+                map.add(uuid, {
+                    field: "name",
+                    problem: Problem.Empty,
+                    severity: Severity.Warn
+                });
+            }
+            // Empty Teacher
+            if (clazz.teacher === "") {
+                map.add(uuid, {
+                    field: "teacher",
+                    problem: Problem.Empty,
+                    severity: Severity.Warn
+                });
+            }
+            // Empty Room
+            if (clazz.room === "") {
+                map.add(uuid, {
+                    field: "room",
+                    problem: Problem.Empty,
+                    severity: Severity.Warn
+                });
+            }
+        }
+
+        return map;
     }
 
     /** The problems with the advisories in the store */
@@ -103,7 +154,7 @@ export class ClassesStorev2 {
             if (advisory.advisor === "") {
                 map.add(uuid, {
                     field: "advisor",
-                    problem: PossibleProblem.EmptyText,
+                    problem: Problem.Empty,
                     severity: Severity.Warn
                 });
             }
@@ -111,7 +162,7 @@ export class ClassesStorev2 {
             if (advisory.room === "") {
                 map.add(uuid, {
                     field: "room",
-                    problem: PossibleProblem.EmptyText,
+                    problem: Problem.Empty,
                     severity: Severity.Warn
                 });
             }
@@ -120,7 +171,7 @@ export class ClassesStorev2 {
             if (timesClassMeetsPerCycle(advisory.meets) === 0) {
                 map.add(uuid, {
                     field: "meets",
-                    problem: PossibleProblem.NoMeetSelected,
+                    problem: Problem.Empty,
                     severity: Severity.Error
                 });
             } else {
@@ -131,7 +182,7 @@ export class ClassesStorev2 {
                         map.add(uuid, {
                             conflict: other,
                             field: "meets",
-                            problem: PossibleProblem.ConflictingMeet,
+                            problem: Problem.Conflict,
                             severity: Severity.Error
                         });
                     }
@@ -146,7 +197,7 @@ export class ClassesStorev2 {
         if (SCHOOL_DAYS.some(x => advisoriesMeets[x].length === 0)) {
             map.add(ProblemMap.ALL_KEY, {
                 field: "meets",
-                problem: PossibleProblem.NotEnoughMeet,
+                problem: Problem.Bare,
                 severity: Severity.Error
             });
         }
@@ -155,30 +206,17 @@ export class ClassesStorev2 {
     }
 }
 
-/** Errors that can occur with a meets field */
-export enum PossibleProblem {
-    // Text field problems
-    EmptyText,
-
-    // Meet field problems
-    NoMeetSelected,
-    InvalidMeetSelected,
-    ConflictingMeet,
-    NotEnoughMeet,
-
-    // Lab field problems
-    LabOverlaps,
-
-    // Color block field problems
-    NoBlockColorSelected,
-    ConflictingBlockColor,
-
-    // Semester field problems
-    NoSemesterSelected
-}
-
 /** Problems for an advisory */
 export type AdvisoryProblems =
-    IProblem<IAdvisory, "advisor" | "room", PossibleProblem.EmptyText, Severity.Warn>
-    | IProblem<IAdvisory, "meets", PossibleProblem.NoMeetSelected | PossibleProblem.NotEnoughMeet, Severity.Error>
-    | IConflict<IAdvisory, "meets", PossibleProblem.ConflictingMeet>;
+    IWarning<IAdvisory, "advisor" | "room", Problem.Empty>
+    | IError<IAdvisory, "meets", Problem.Empty | Problem.Bare>
+    | IConflict<IAdvisory, "meets">;
+
+/** Problems for a class */
+export type ClassProblems =
+    IWarning<IClass, "name" | "teacher" | "room", Problem.Empty>
+    | IWarning<IClass, "block", Problem.Empty>
+    | IError<IClass, "meets", Problem.Empty | Problem.Invalid>
+    | IError<IClass, "semesters", Problem.Empty>
+    | IConflict<IClass, "meets">
+    | IConflict<IClass, "lab">;
